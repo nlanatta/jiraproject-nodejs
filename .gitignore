@@ -1,0 +1,5 @@
+#Folders and files to avoid in the repo
+bin/
+dist/
+node_modules
+
