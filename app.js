@@ -11,6 +11,7 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import stylus from 'stylus';
+import hello from './routes/hello';
 
 let app = express();
 
@@ -21,21 +22,21 @@ app.use(session({ secret: 'jiraProject',
                   sessionValue: '',
                   cookie: { secure: false }   }));
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(stylus.middleware(path.join(__dirname, 'public')));
+//app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/findIssue', findIssue);
 app.use('/jiraController', jiraController);
 app.use('/login', login);
 app.use('/doLogin', doLogin);
-
+app.use('/hello', hello);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

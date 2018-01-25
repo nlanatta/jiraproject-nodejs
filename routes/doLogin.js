@@ -20,13 +20,15 @@ router.post('/', function(req, res, next) {
         req.session.sessionName =  session.session.name;
         req.session.sessionValue =  session.session.value;
         req.session.save();
+        console.log(JSON.stringify({ cookie: req.session.sessionName+"="+req.session.sessionValue}));
+        res.send(JSON.stringify({ cookie: req.session.sessionName+"="+req.session.sessionValue}));
       }
     }
     const mySession = new Session(user, password, setSession);
     mySession.session;
 
 
-    res.render('index', { title: 'SUCCESSFULL LOGIN' });
+    //res.render('index', { title: 'SUCCESSFULL LOGIN' });
 });
 
 module.exports = router;
